@@ -37,6 +37,8 @@ jobs:
       - name: Checks
         continue-on-error: true
         run: |
+          date > test.txt
+          echo "*****"
           git branch
           echo "*****"
           git status
@@ -47,10 +49,6 @@ jobs:
           echo "GITHUB_REF = ${{ github.ref }}"
           echo "*****"
           echo "GITHUB_BASE_REF = ${{ github.base_ref }}"
-          echo "*****"
-          echo "GITHUB_HEAD = ${{ github.head }}"
-          echo "*****"
-          date > reports/ubuntu_report_minimal.txt
 
       - name: Commit patches
         uses: GuillaumeFalourd/git-commit-push@test
