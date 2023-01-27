@@ -32,10 +32,14 @@ jobs:
           path: nw-toolkit/patches
           key: ${{ runner.os }}-patches
           
-      - run: git status
+      - run: |
+          git branch 
+          git status --porcelain
+          echo "GITHUB_REF = ${{ github.ref }}"
+          echo "GITHUB_BASE_REF = ${{ github.base_ref }}"
 
       - name: Commit patches
         uses: GuillaumeFalourd/git-commit-push@v1.3
         with:
           commit_message: "[nw-toolkit] update nw patches"
-          target_branch: ${{ github.base_ref }}
+          target_branch: main
