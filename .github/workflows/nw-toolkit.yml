@@ -41,7 +41,8 @@ jobs:
           echo "*****"
           git status
           echo "*****"
-          git difftool -d main nw-toolkit/patch-job-on-pr -- .
+          git fetch
+          git diff origin/main...
           echo "*****"
           echo "GITHUB_REF = ${{ github.ref }}"
           echo "*****"
