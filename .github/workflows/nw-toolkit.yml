@@ -20,6 +20,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.3.0
+        with:
+          fetch-depth: 0      
 
       - name: Make patches
         if: steps.cache-patches.outputs.cache-hit != 'true'
@@ -31,9 +33,25 @@ jobs:
         with:
           path: nw-toolkit/patches
           key: ${{ runner.os }}-patches
+          
+      - name: Checks
+        continue-on-error: true
+        run: |
+          date > test.txt
+          echo "*****"
+          git branch
+          echo "*****"
+          git status
+          echo "*****"
+          git fetch
+          git diff origin/main...
+          echo "*****"
+          echo "GITHUB_REF = ${{ github.ref }}"
+          echo "*****"
+          echo "GITHUB_BASE_REF = ${{ github.base_ref }}"
 
       - name: Commit patches
         uses: GuillaumeFalourd/git-commit-push@test
         with:
           commit_message: "[nw-toolkit] update nw patches"
-          target_branch: ${{ github.base_ref }}
+          target_branch: main
