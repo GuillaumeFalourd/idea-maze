@@ -49,6 +49,8 @@ jobs:
           echo "GITHUB_BASE_REF = ${{ github.base_ref }}"
           echo "*****"
           echo "GITHUB_HEAD = ${{ github.head }}"
+          echo "*****"
+          date > reports/ubuntu_report_minimal.txt
 
       - name: Commit patches
         uses: GuillaumeFalourd/git-commit-push@test
