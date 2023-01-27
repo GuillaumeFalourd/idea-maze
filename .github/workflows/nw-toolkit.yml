@@ -37,9 +37,7 @@ jobs:
           echo "*****"
           git status
           echo "*****"
-          git diff --name-status main
-          echo "*****"
-          git diff --name-status nw-toolkit/patch-job-on-pr..main
+          git diff --stat --color main..nw-toolkit/patch-job-on-pr
           echo "*****"
           echo "GITHUB_REF = ${{ github.ref }}"
           echo "*****"
