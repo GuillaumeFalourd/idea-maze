@@ -31,6 +31,8 @@ jobs:
         with:
           path: nw-toolkit/patches
           key: ${{ runner.os }}-patches
+          
+      - run: git status
 
       - name: Commit patches
         uses: GuillaumeFalourd/git-commit-push@v1.3
