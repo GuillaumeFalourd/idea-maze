@@ -34,7 +34,7 @@ jobs:
           
       - run: |
           git branch 
-          git status --porcelain
+          git status
           echo "GITHUB_REF = ${{ github.ref }}"
           echo "GITHUB_BASE_REF = ${{ github.base_ref }}"
 
