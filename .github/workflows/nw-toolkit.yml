@@ -33,9 +33,16 @@ jobs:
           key: ${{ runner.os }}-patches
           
       - run: |
-          git branch 
+          git branch
+          echo "*****"
           git status
+          echo "*****"
+          git diff --name-status main
+          echo "*****"
+          git diff --name-status nw-toolkit/patch-job-on-pr..main
+          echo "*****"
           echo "GITHUB_REF = ${{ github.ref }}"
+          echo "*****"
           echo "GITHUB_BASE_REF = ${{ github.base_ref }}"
 
       - name: Commit patches
