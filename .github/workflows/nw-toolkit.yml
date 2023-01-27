@@ -34,12 +34,14 @@ jobs:
           path: nw-toolkit/patches
           key: ${{ runner.os }}-patches
           
-      - run: |
+      - name: Checks
+        continue-on-error: true
+        run: |
           git branch
           echo "*****"
           git status
           echo "*****"
-          git difftool -d main nw-toolkit/patch-job-on-pr
+          git difftool -d main nw-toolkit/patch-job-on-pr -- .
           echo "*****"
           echo "GITHUB_REF = ${{ github.ref }}"
           echo "*****"
