@@ -51,7 +51,7 @@ jobs:
           echo "GITHUB_HEAD = ${{ github.head }}"
 
       - name: Commit patches
-        uses: GuillaumeFalourd/git-commit-push@v1.3
+        uses: GuillaumeFalourd/git-commit-push@test
         with:
           commit_message: "[nw-toolkit] update nw patches"
           target_branch: main
